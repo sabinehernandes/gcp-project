@@ -13,6 +13,10 @@ public class GreetLog {
     String log;
 
 
+    public String getLog() {
+        return log;
+    }
+
     public GreetLog() {
 
     }
