@@ -11,7 +11,7 @@ public class Controller {
 
     String greeting = "Hello";
 
-    @GetMapping("localhost:8080/{name}")
+    @GetMapping("/{name}")
     public String getGreeting(@PathVariable String name) {
         return greeting + " " + name;
     }
