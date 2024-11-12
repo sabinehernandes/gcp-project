@@ -1,9 +1,7 @@
-FROM maven:3.8.4-openjdk-17-slim AS build
+FROM maven:3.8.7-openjdk-18-slim
 WORKDIR /app/chili
-COPY pom.xml
-COPY src ./src
+COPY ./chili .
 RUN mvn clean package
-FROM openjdk:17-jre-slim
-WORKDIR /app/chili
-COPY - from=build /app/chili/target/HelloServiceApplication.jar
-CMD ["java", "-jar", "HelloServiceApplication.jar"]
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/app/chili/target/chili-0.0.1-SNAPSHOT.jar"]
