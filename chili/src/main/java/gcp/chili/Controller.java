@@ -11,8 +11,14 @@ public class Controller {
 
     String greeting = "Hello";
 
-    @GetMapping("/{name}")
+    @GetMapping("/greet/{name}")
     public String getGreeting(@PathVariable String name) {
         return greeting + " " + name;
+    }
+
+    @GetMapping("/change/{hej}")
+    public String getHej(@PathVariable String hej) {
+        greeting = hej;
+        return greeting;
     }
 }
