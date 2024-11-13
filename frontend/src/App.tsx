@@ -1,13 +1,13 @@
 import "./App.css";
+import Dog from "./components/dog";
 import Dogspawner from "./components/dogSpawner";
-import Greeter from "./components/greeter";
 
 function App() {
   return (
     <>
       <h1>Chilis Greeting Service @TM</h1>
-      <Greeter />
       <Dogspawner />
+      <Dog />
     </>
   );
 }

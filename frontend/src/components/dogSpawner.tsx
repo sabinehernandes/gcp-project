@@ -39,6 +39,7 @@ export default function Dogspawner() {
             onChange={(e) => setName(e.target.value)}
           ></input>
         </label>
+
         <label>
           Breed:
           <input
@@ -47,8 +48,9 @@ export default function Dogspawner() {
             onChange={(e) => setBreed(e.target.value)}
           ></input>
         </label>
+
         <label>
-          Name:
+          Age:
           <input
             type="number"
             value={age}
