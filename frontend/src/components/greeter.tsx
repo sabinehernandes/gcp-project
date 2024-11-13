@@ -3,9 +3,15 @@ import { useState } from "react";
 export default function Greeter() {
   const [name, setName] = useState("Hernandes");
 
+  const handleSubmit = (input: React.FormEvent) => {
+    input.preventDefault();
+    alert(name);
+    setName("");
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>
           Greeting:
           <input
