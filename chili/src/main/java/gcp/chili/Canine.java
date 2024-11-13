@@ -24,10 +24,11 @@ public class Canine {
         this.imageUrl = imageUrl;
     }
 
-    public Canine(String name, String breed, int age) {
+    public Canine(String name, String breed, int age, String imageUrl) {
         this.name = name;
         this.breed = breed;
         this.age = age;
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {
