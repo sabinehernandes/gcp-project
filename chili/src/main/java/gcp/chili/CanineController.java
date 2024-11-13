@@ -4,6 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -20,4 +22,25 @@ public class CanineController {
         Canine doggy = repo.save(new Canine(request.name(), request.breed(), request.age(), request.imageUrl()));
         return ResponseEntity.created(URI.create(doggy.getId())).body(doggy);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteDog(@PathVariable String id){
+        Optional<Canine> doggy = repo.findById(id);
+        if(doggy.isPresent()){
+
+            repo.delete(doggy.get());
+            return ResponseEntity.ok().build();
+        }
+      return ResponseEntity.notFound().build();
+
+    }
+    @GetMapping()
+    public ResponseEntity<List<Canine>> findAll(){
+
+        return ResponseEntity.ok().body(repo.findAll());
+
+    }
+
+
+
 }
