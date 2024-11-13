@@ -1,12 +1,16 @@
 import { useState } from "react";
 
+const path = "https://chilis-say-hi-876198057788.europe-north1.run.app/";
+
 export default function Greeter() {
   const [name, setName] = useState("Hernandes");
+  const [greeting, setGreeting] = useState("Will be here");
 
-  const handleSubmit = (input: React.FormEvent) => {
+  const handleSubmit = async (input: React.FormEvent) => {
     input.preventDefault();
-    alert(name);
-    setName("");
+    const response = await fetch(path + "greet/" + name, { method: "GET" });
+    // const json = await response.json();
+    setGreeting(await response.text());
   };
 
   return (
@@ -22,6 +26,7 @@ export default function Greeter() {
         </label>
         <button type="submit">Some text just too</button>
       </form>
+      <div>{greeting}</div>
     </>
   );
 }
