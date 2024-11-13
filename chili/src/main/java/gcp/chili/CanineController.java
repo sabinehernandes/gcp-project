@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/canines")
 public class CanineController {
     CanineRepository repo;
@@ -26,8 +26,7 @@ public class CanineController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteDog(@PathVariable String id){
         Optional<Canine> doggy = repo.findById(id);
-        if(doggy.isPresent()){
-
+        if(doggy.isPresent()) {
             repo.delete(doggy.get());
             return ResponseEntity.ok().build();
         }

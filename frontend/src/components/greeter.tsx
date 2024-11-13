@@ -9,7 +9,6 @@ export default function Greeter() {
   const handleSubmit = async (input: React.FormEvent) => {
     input.preventDefault();
     const response = await fetch(path + "greet/" + name, { method: "GET" });
-    // const json = await response.json();
     setGreeting(await response.text());
   };
 
