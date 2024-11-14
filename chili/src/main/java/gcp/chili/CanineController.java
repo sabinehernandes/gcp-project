@@ -1,5 +1,6 @@
 package gcp.chili;
 
+import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,7 +36,9 @@ public class CanineController {
     // make another endpoint that handles the file....
     @PostMapping("/img/{id}")
     public ResponseEntity<String> saveDoggyImage(@RequestParam MultipartFile file, @PathVariable String id) throws IOException {
-
+    Resource res = file.getResource();
+    File chiliFile = res.getFile();
+        System.out.println("chiliFile = " + chiliFile);
        String fileResponse =  supaService.upload(file);
 //        String fileName = file.getName();
 //        System.out.println("fileName = " + fileName);
