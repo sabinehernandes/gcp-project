@@ -45,7 +45,7 @@ public class HelloServiceApplication {
 		byte[] fileContent = Files.readAllBytes(fi.toPath());
 				storageAPI.upload("chiliDogs/doggy.jpg",fileContent);
 
-				
+
 	}
 
 }

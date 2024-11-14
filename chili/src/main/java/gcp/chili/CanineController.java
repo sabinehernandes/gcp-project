@@ -19,9 +19,11 @@ public class CanineController {
 
     @PostMapping()
     public ResponseEntity<Canine> addDog(@RequestBody CanineDto request) {
-        Canine doggy = repo.save(new Canine(request.name(), request.breed(), request.age(), request.image()));
+        Canine doggy = repo.save(new Canine(request.name(), request.breed(), request.age()));
         return ResponseEntity.created(URI.create(doggy.getId())).body(doggy);
     }
+
+    // make another endpoint that handles the file....
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteDog(@PathVariable String id){

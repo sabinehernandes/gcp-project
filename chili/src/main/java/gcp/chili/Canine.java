@@ -16,21 +16,21 @@ public class Canine {
     private String breed;
     private int age;
     @Column(nullable = true)
-    private File image;
+    private String imageUrl;
 
-    public File getImageUrl() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.image = image;
+        this.imageUrl = imageUrl;
     }
 
-    public Canine(String name, String breed, int age, File image) {
+    public Canine(String name, String breed, int age) {
         this.name = name;
         this.breed = breed;
         this.age = age;
-        this.image = image;
+
     }
 
     public String getId() {

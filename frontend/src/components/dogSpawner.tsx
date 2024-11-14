@@ -19,7 +19,6 @@ export default function Dogspawner() {
       name: name,
       breed: breed,
       age: age,
-      image: file,
     };
     console.log("doggy ", JSON.stringify(doggy));
     const response = await fetch(path + "canines", {
