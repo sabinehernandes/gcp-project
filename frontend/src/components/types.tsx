@@ -3,3 +3,10 @@ export type dogDto = {
   name: string;
   breed: string;
 };
+
+export type dogInstance = {
+  age: number;
+  name: string;
+  breed: string;
+  imgUrl: string;
+};

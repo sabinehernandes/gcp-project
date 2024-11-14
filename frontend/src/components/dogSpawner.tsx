@@ -6,19 +6,14 @@ const tempPath = "http://localhost:8080/";
 const path = "https://chilis-say-hi-876198057788.europe-north1.run.app/";
 
 export const deleteDog = async (id: string) => {
-  try {
-    const response = await fetch(path + id, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json; charset=utf-8",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("FAIL TO DELETE DOG");
-    }
-  } catch (error) {
-    throw error;
+  const response = await fetch(path + "canines/" + id, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+    },
+  });
+  if (!response.ok) {
+    throw new Error("FAIL TO DELETE DOG");
   }
 };
 

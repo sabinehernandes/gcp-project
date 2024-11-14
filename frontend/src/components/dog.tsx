@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import DogCard from "./dogCard";
 
 export default function Dog() {
   const path = "https://chilis-say-hi-876198057788.europe-north1.run.app/";
@@ -28,10 +29,12 @@ export default function Dog() {
       <ul>
         {data.map((e) => (
           <>
-            <li>{e.name}</li>
-            <li>{e.breed}</li>
-            <li>{e.age}</li>
-            <img src={e.imageUrl} alt="ImageHere" />
+            <DogCard
+              name={e.name}
+              breed={e.breed}
+              age={e.age}
+              imgUrl={e.imageUrl}
+            />
           </>
         ))}
       </ul>
