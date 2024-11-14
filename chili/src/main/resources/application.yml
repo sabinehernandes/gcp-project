@@ -12,7 +12,7 @@ spring:
       enabled: always
 
   datasource:
-    url: ${DB_URL}
+    url: jdbc:postgresql://ep-soft-rice-a2e7q4y3.eu-central-1.aws.neon.tech/chiliDB?user=wikiDB_owner&password=u4cJ1lhyXtwY&sslmode=require
 
   jpa:
     show-sql: true

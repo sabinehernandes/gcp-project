@@ -19,7 +19,7 @@ public class CanineController {
 
     @PostMapping()
     public ResponseEntity<Canine> addDog(@RequestBody CanineDto request) {
-        Canine doggy = repo.save(new Canine(request.name(), request.breed(), request.age(), request.imageUrl()));
+        Canine doggy = repo.save(new Canine(request.name(), request.breed(), request.age(), request.image()));
         return ResponseEntity.created(URI.create(doggy.getId())).body(doggy);
     }
 

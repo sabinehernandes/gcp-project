@@ -3,6 +3,8 @@ package gcp.chili;
 import jakarta.persistence.*;
 import org.springframework.lang.Nullable;
 
+import java.io.File;
+
 @Entity
 public class Canine {
 
@@ -14,21 +16,21 @@ public class Canine {
     private String breed;
     private int age;
     @Column(nullable = true)
-    private String imageUrl;
+    private File image;
 
-    public String getImageUrl() {
-        return imageUrl;
+    public File getImageUrl() {
+        return image;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
-    public Canine(String name, String breed, int age, String imageUrl) {
+    public Canine(String name, String breed, int age, File image) {
         this.name = name;
         this.breed = breed;
         this.age = age;
-        this.imageUrl = imageUrl;
+        this.image = image;
     }
 
     public String getId() {

@@ -1,5 +1,7 @@
 package gcp.chili;
 
-public record CanineDto(String name, String breed, int age, String imageUrl) {
+import java.io.File;
+
+public record CanineDto(String name, String breed, int age, File image) {
 
 }

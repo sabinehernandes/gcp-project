@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { dogDto } from "./types";
+import { QueryClient } from "@tanstack/react-query";
 
 const path = "https://chilis-say-hi-876198057788.europe-north1.run.app/";
 
 export default function Dogspawner() {
+  const [file, setFile] = useState<File | null>(null);
+
   const [name, setName] = useState("Hernandes");
   const [breed, setBreed] = useState("Husky");
   const [age, setAge] = useState(0);
@@ -11,12 +14,14 @@ export default function Dogspawner() {
 
   const handleSubmit = async (input: React.FormEvent) => {
     input.preventDefault();
+
     const doggy: dogDto = {
       name: name,
       breed: breed,
       age: age,
-      imageUrl: "ToDO",
+      imageUrl: file,
     };
+    console.log("doggy ", JSON.stringify(doggy));
     const response = await fetch(path + "canines", {
       method: "POST",
       headers: {
@@ -56,6 +61,19 @@ export default function Dogspawner() {
             value={age}
             onChange={(e) => setAge(parseInt(e.target.value))}
           ></input>
+        </label>
+        <label className="flex items-center space-x-10 min-w-0 ">
+          File:
+          <input
+            className="input bg-gray-50 h-8 bg-transparent  "
+            type="file"
+            accept="img/*"
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                setFile(e.target.files[0]);
+              }
+            }}
+          />
         </label>
         <button type="submit">Some text just too</button>
       </form>
