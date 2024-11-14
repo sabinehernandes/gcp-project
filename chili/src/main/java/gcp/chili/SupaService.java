@@ -2,6 +2,7 @@ package gcp.chili;
 
 import com.harium.supabase.SupabaseClient;
 import com.harium.supabase.storage.StorageAPI;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,9 +16,9 @@ public class SupaService {
     String url = "https://cjwzbienfxxvqlvizeca.supabase.co/storage/v1/object/public/";
     StorageAPI storageAPI = supabase.storage();
 
-    public String upload(MultipartFile file) throws IOException {
-        byte[] fileContent = (file.getBytes());
-        storageAPI.upload("chiliDogs/" + file.getOriginalFilename(), fileContent);
-        return url + "chiliDogs/" + file.getName();
+    public String upload(Resource file) throws IOException {
+        byte[] fileContent = (file.getContentAsByteArray());
+        storageAPI.upload("chiliDogs/" + file.getFilename(), fileContent);
+        return url + "chiliDogs/" + file.getFilename();
     }
 }
