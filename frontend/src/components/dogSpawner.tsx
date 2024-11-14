@@ -19,13 +19,14 @@ export default function Dogspawner() {
       name: name,
       breed: breed,
       age: age,
-      imageUrl: file,
+      image: file,
     };
     console.log("doggy ", JSON.stringify(doggy));
     const response = await fetch(path + "canines", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
+        // "Content-Type": "multipart/form-data; charset=utf-8",
       },
       body: JSON.stringify(doggy),
     });

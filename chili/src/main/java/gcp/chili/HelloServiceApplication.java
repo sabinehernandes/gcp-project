@@ -44,8 +44,8 @@ public class HelloServiceApplication {
 		File fi = new File("src/main/resources/images/johnsDoggy.JPG");
 		byte[] fileContent = Files.readAllBytes(fi.toPath());
 				storageAPI.upload("chiliDogs/doggy.jpg",fileContent);
-				storageAPI.downl
 
+				
 	}
 
 }
