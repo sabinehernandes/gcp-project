@@ -31,6 +31,7 @@ export default function Dog() {
             <li>{e.name}</li>
             <li>{e.breed}</li>
             <li>{e.age}</li>
+            <img src={e.imageUrl} alt="ImageHere" />
           </>
         ))}
       </ul>

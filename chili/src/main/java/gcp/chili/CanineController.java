@@ -37,10 +37,14 @@ public class CanineController {
     @PostMapping("/img/{id}")
     public ResponseEntity<String> saveDoggyImage(@RequestParam MultipartFile file, @PathVariable String id) throws IOException {
     Resource res = file.getResource();
-       String fileResponse =  supaService.upload(res);
-//        String fileName = file.getName();
-//        System.out.println("fileName = " + fileName);
-        return ResponseEntity.ok().body(fileResponse);
+    String fileResponse =  supaService.upload(res);
+        Optional<Canine> doggy = repo.findById(id);
+        if(doggy.isPresent()) {
+            Canine dog = doggy.get();
+            dog.setImageUrl(fileResponse);
+            repo.save(dog);
+        }
+    return ResponseEntity.ok().body(fileResponse);
     }
 
 
