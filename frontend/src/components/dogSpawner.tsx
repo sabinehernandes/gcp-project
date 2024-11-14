@@ -5,6 +5,23 @@ import { QueryClient, useQueryClient } from "@tanstack/react-query";
 const tempPath = "http://localhost:8080/";
 const path = "https://chilis-say-hi-876198057788.europe-north1.run.app/";
 
+export const deleteDog = async (id: string) => {
+  try {
+    const response = await fetch(path + id, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("FAIL TO DELETE DOG");
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default function Dogspawner() {
   const [file, setFile] = useState<File | null>(null);
 
@@ -23,11 +40,10 @@ export default function Dogspawner() {
       age: age,
     };
     console.log("doggy ", JSON.stringify(doggy));
-    const response = await fetch(tempPath + "canines", {
+    const response = await fetch(path + "canines", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        // "Content-Type": "multipart/form-data; charset=utf-8",
       },
       body: JSON.stringify(doggy),
     });
@@ -35,7 +51,7 @@ export default function Dogspawner() {
     setGreeting(json.name + " was created! Find it at  " + json.id);
     const imgData = new FormData();
     if (file) imgData.append("file", file);
-    const rez = await fetch(tempPath + "canines/img/" + json.id, {
+    const rez = await fetch(path + "canines/img/" + json.id, {
       method: "POST",
       headers: {},
       body: imgData,
