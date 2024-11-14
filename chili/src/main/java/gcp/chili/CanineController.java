@@ -19,9 +19,11 @@ import java.util.Optional;
 @RequestMapping("/canines")
 public class CanineController {
     CanineRepository repo;
+    SupaService supaService;
 
-    public CanineController(CanineRepository repo) {
+    public CanineController(CanineRepository repo, SupaService supaService) {
         this.repo = repo;
+        this.supaService = supaService;
     }
 
     @PostMapping()
@@ -32,10 +34,12 @@ public class CanineController {
 
     // make another endpoint that handles the file....
     @PostMapping("/img/{id}")
-    public ResponseEntity saveDoggyImage(@RequestParam MultipartFile file, @PathVariable String id) {
-        String fileName = file.getName();
-        System.out.println("fileName = " + fileName);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<String> saveDoggyImage(@RequestParam MultipartFile file, @PathVariable String id) throws IOException {
+
+       String fileResponse =  supaService.upload(file);
+//        String fileName = file.getName();
+//        System.out.println("fileName = " + fileName);
+        return ResponseEntity.ok().body(fileResponse);
     }
 
 
