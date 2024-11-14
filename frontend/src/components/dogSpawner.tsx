@@ -2,6 +2,7 @@ import { useState } from "react";
 import { dogDto } from "./types";
 import { QueryClient } from "@tanstack/react-query";
 
+const tempPath = "http://localhost:8080/";
 const path = "https://chilis-say-hi-876198057788.europe-north1.run.app/";
 
 export default function Dogspawner() {
@@ -21,7 +22,7 @@ export default function Dogspawner() {
       age: age,
     };
     console.log("doggy ", JSON.stringify(doggy));
-    const response = await fetch(path + "canines", {
+    const response = await fetch(tempPath + "canines", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
